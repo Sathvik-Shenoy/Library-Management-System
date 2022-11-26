@@ -5,29 +5,42 @@
 	<link rel="stylesheet" type="text/css" href="style_set_pass.css">
 </head>
 <body>
-    <form action="set-p.php" method="post">
+    <form action="set-p-stu-1.php" method="post">
      	<h2> Change Password</h2>
 
-     	<label> Employee ID </label>
+     	<label> College ID </label>
      	<input type="text" 
-     	       name="employee_id"
-     	       placeholder=" Employee ID " required>
+     	       name="usn"
+     	       placeholder=" USN ">
      	       <br>
 
      	<label> New Password </label>
      	<input type="password" 
      	       name="password" 
-     	       placeholder="New Password" required>
+     	       placeholder="New Password">
      	       <br>
 
      	<label> Confirm New Password </label>
      	<input type="password" 
      	       name="confirm_password" 
-     	       placeholder="Confirm New Password" required>
+     	       placeholder="Confirm New Password">
      	       <br>
 
      	<button type="submit"> SET PASSWORD </button>
           <a href="index.html" class="ca"> HOME </a>
      </form>
+
+	 <!-- <script>
+		$(".toggle-password").click(function() {
+
+		$(this).toggleClass("fa-eye fa-eye-slash");
+			var input = $($(this).attr("toggle"));
+			if (input.attr("type") == "password") {
+  				input.attr("type", "text");
+			} else {
+  				input.attr("type", "password");
+			}
+		});
+	 </script> -->
 </body>
 </html>

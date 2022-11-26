@@ -36,7 +36,7 @@
     $c_password = $_POST['confirm_password'];
 
     if($password == $c_password){    
-        $res = mysqli_query($con, "SELECT * FROM `Students` WHERE `USN`='$usn'");
+        $res = mysqli_query($con, "SELECT * FROM `outsider_student` WHERE `college_id`='$usn'");
         if($res == false) {
             $rows = 0;
         } else {

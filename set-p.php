@@ -41,9 +41,9 @@
 
         if($rows == 1) {
             // Set password for a new faculty ID
-            $sql1 = mysqli_query($con, "INSERT INTO `Library_card_index` (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$employeeID', '$password')");
-            $sql2 = mysqli_query($con, "UPDATE `Faculty` SET lib_id=$lib_id WHERE faculty_id=$employeeID");
-            if(!$sql2 || !$sql1) {
+            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$password' WHERE faculty_id=$employeeID");
+            //$sql2 = mysqli_query($con, "UPDATE `Faculty` SET lib_id=$lib_id WHERE faculty_id=$employeeID");
+            if(!$sql1) {
                 // Invalid Credentials 
                 echo "Error";
             } else { // SUCCESS 
@@ -60,12 +60,12 @@
             <div class="cont">
                 <br>
                 <br>
-                <h1 style="text-align:center"> User Successfully Registered  </h1>
+                <h1 style="text-align:center"> Password Succesfully Changed </h1>
                 <br>
                 <center><img src="images/tick.png"></center>
                 <br>
-                <h2 style=text-align:center> Please remember your Library ID for login </h2>
-                <h3 style="text-align:center"> Your library ID is  <?php echo $lib_id ?> </h3>
+                <!--<h2 style=text-align:center> Please remember your Library ID for login </h2>
+                <h3 style="text-align:center"> Your library ID is  <?php echo $lib_id ?> </h3>-->
             </div>
             </body>
         </html>
