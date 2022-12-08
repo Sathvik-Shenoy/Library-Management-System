@@ -70,7 +70,7 @@
                         showConfirmButton: false,
                         timer: 2300
                     }).then(() => {
-                            window.location.href = "http://localhost/attendance-management-system/admin/node_modules/startbootstrap-sb-admin-2/index.php";
+                            window.location.href = "http://localhost/Library-Management-System/admin/node_modules/startbootstrap-sb-admin-2/index.php";
                     })
                 </script>
                 </body>
