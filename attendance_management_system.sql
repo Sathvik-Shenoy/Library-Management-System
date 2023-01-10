@@ -1,5 +1,5 @@
 ## SQL for DBMS PROJECT : Attendance Management System 
-## Done by : 1. Yashas Uttangi  2. Prajeeth Bharadwaj 
+## Done by : 1. B SATHVIK SHENOY  2. BHUVAN S  3. DHANYA VINAYAK HEGDE  4. NIHAL NOOJIBAIL 
 
 #--- Creating a new database 
 #--- Database name : attendance management system
@@ -17,7 +17,7 @@ CREATE TABLE `Library_card_index` (
 	`lib_id` INT UNIQUE NOT NULL,
 	`college_id` VARCHAR(20) UNIQUE,
 	`faculty_id` CHAR(15) UNIQUE,
-    `password` VARCHAR(40),
+    `password` VARCHAR(256),
 	PRIMARY KEY(`lib_id`)
 );
 
@@ -87,6 +87,7 @@ CREATE TABLE `Library_ledger` (
     PRIMARY KEY(`lib_id`, `entry`),
 	FOREIGN KEY(`lib_id`) REFERENCES Library_card_index(`lib_id`)
 );
+ 
 #--- Creating table : "Reference_section" => This will hold the record of visitors to the reference section.
 CREATE TABLE `Reference_section` (
 	`lib_id` INT NOT NULL,
@@ -153,8 +154,8 @@ CREATE EVENT exit_reference_section_event
     UPDATE `Library_ledger` SET `status`=0 WHERE `status`=1;
 
 #--- Adding data to Staff table :
-INSERT INTO `Faculty` VALUES 
-	('196543', 'Librarian','2002-03-04','Admin','lib@gmail.com','1234567890',null,'TF','Librarian');
+/*INSERT INTO `Faculty` VALUES 
+	('196543', 'Librarian','2002-03-04','Admin','lib@gmail.com','1234567890',null,'TF','Librarian');*/
 	##(197806, 'Dr. B S Mahanand', '2008-03-04', 'Information Science and Engineering', 'bsmahanand@sjce.ac.in', '9988993322', null, 'TF', 'Head of the Department'),
 	##(197809, 'Dr. R J Pratibha', '2010-03-10', 'Information Science and Engineering', 'rjpratibha@sjce.ac.in', '9988993324', null, 'TF', 'Assistant Professor'),
 	##(197808, 'Dr. Anand Raj Ulle', '2012-03-04', 'Information Science and Engineering', 'anandulle@sjce.ac.in', '9988863326', null, 'TF', 'Assistant Professor'),
@@ -180,18 +181,20 @@ INSERT INTO `Faculty` VALUES
     ##(197829, 'Manoj Kumar', '2018-05-02', 'Mechanical Engineering', 'manojkumar@sjce.ac.in', '9000000332', null, 'TF', 'Assistant Professor'),
     ##(197830, 'Dr Pradeep M', '2010-09-05', 'Placement Cell', 'pradeep@sjce.ac.in', '9111122223', null, 'NTF', 'Placement Officer'), 
     ##(197831, 'Kriti ', '2015-07-02', 'Electronics and Communication', 'kriti@sjce.ac.in', '9933393908', null, 'TF', 'Assistant Professor');
-
+/*
 INSERT INTO `Library_card_index` VALUES
-(123,'123',196543,'123'),
-(194035,'124',194035,'123'),
-(194036,'125',194036,'123');
+(123,null,196543,'123'),
+(194035,'01JST20IS011',null,'123'),
+(194036,'01JST18IS050',null,'123');
+*/
 SELECT * FROM `Library_card_index`;
-
+SELECT * FROM LIBRARY_LEDGER;
+##SELECT * FROM `outsider_student`;
 #--- Adding the data to the Students table :  	
-INSERT INTO `Students` VALUES 
+/*INSERT INTO `Students` VALUES 
 	('01JST20IS011', 'Sathvik', '2002-09-29', 'IS', 5, 'sathvik@gmail.com', 7259499443, 194035, 'UG'),
-	('01JST19CB050', 'Yashas Uttangi', '2001-10-20', 'CSBS', 4, 'yashuttangi@gmail.com', 9480945628, 194036, 'UG');
-	/*('01JST19CB033', 'Prajeeth Baradwaj', '2001-08-02', 'CSBS', 4, 'prajeeth@gmail.com', 9990009900, 194037, 'PG'),
+	('01JST18IS050', 'Karthik', '2000-10-20', 'IS', 4, 'karthik@gmail.com', 9480945634, 194036, 'UG');
+	('01JST19CB033', 'Prajeeth Baradwaj', '2001-08-02', 'CSBS', 4, 'prajeeth@gmail.com', 9990009900, 194037, 'PG');
 	('01JST19CB017', 'Harsh R Shah', '2002-03-04', 'CSBS', 4,'harshshah@gmail.com', 8899880099, 194038, 'EC'),
     ('01JST19CS018', 'Meghanath', '2002-03-04', 'CSE', 4,'m@gmail.com', 8899881099, 194039, 'EC'),
     ('01JST19CB019', 'Danussh', '2002-03-04', 'CSBS', 4,'d@gmail.com', 8899812099, 194040, 'EC'),
@@ -210,7 +213,8 @@ INSERT INTO `Students` VALUES
     ('01JST20CB050', 'Yashas Uttangi', '2001-10-20', 'CSBS', 4, 'yashuttangi@gmail.com', 9480945628, '196543','UG');*/
     
     ##SELECT * FROM `Library_Card_Index`;
-    ##SELECT * FROM `Students`;
+	SELECT * FROM `Students`;
+	##SELECT * FROM `Faculty`;
     ##INSERT INTO `Students` VALUES
     ##('01JST20CB050', 'Yashas Uttangi', '2001-10-20', 'CSBS', 4, 'yashuttangi@gmail.com', 9480945628, 196543,'UG');
 -- DELIMITER //
