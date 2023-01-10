@@ -24,10 +24,13 @@
         
         if($rows == 1) {
 
-            $pass_verify = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id AND `password`='$password'"); 
-            $pass_verify_rows = mysqli_num_rows($pass_verify);
-
-            if($pass_verify_rows == 1) {
+            //$pass_verify = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id AND `password`='$password'"); 
+            //$pass_verify_rows = mysqli_num_rows($pass_verify);
+            $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id");
+            $row=mysqli_fetch_assoc($result);
+            $hash=$row['password'];
+            $verify=password_verify($password,$hash);
+            if($verify) {
             $insert_entry = "INSERT INTO `Library_ledger` (lib_id) VALUES ($lib_id)";
             mysqli_query($con, $insert_entry);
             ?>

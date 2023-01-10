@@ -40,8 +40,8 @@
     $Password = $_POST['password'];
 
     $sql = ("INSERT INTO Outsider_student (lib_id, name, phone, college, branch, semester, college_id) VALUES ('$lib_id', '$Name', '$PhoneNumber', '$College', '$Branch', $Semester, '$College_ID')");
-
-    $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$Password')");
+    $hash=password_hash($password,PASSWORD_DEFAULT);
+    $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$hash')");
     
     mysqli_query($con, $sql2);
 

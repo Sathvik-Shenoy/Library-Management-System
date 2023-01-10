@@ -39,8 +39,8 @@
     $Employee_ID = $_POST['employee_id'];
     $password = $_POST['password'];
 
-    
-    mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$Employee_ID', '$password')");
+    $hash=password_hash($password,PASSWORD_DEFAULT);
+    mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$Employee_ID', '$hash')");
 
     $sql = "INSERT INTO Outsider_faculty (lib_id, name, phone, college, department, designation, faculty_id) VALUES ('$lib_id', '$Name', '$PhoneNumber', '$College', '$Department','$Designation', '$Employee_ID')";
 

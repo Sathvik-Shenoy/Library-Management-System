@@ -16,6 +16,7 @@
 
     $sql = "SELECT * FROM `Library_card_index` WHERE `faculty_id`=$admin_id";
     $sql2 = "SELECT * FROM `Faculty` WHERE `faculty_id`=$admin_id AND `Designation`='Librarian'";
+    
     if(!$sql || !$sql2) {
         ?>
             <!-- WRONG PASSWORD -->
@@ -48,10 +49,15 @@
             </html>
                 <?php
     } else {
-        $pass = mysqli_query($con, "SELECT * FROM `Library_card_index` WHERE `faculty_id`=$admin_id AND `password`='$password' AND `faculty_id`=(SELECT `faculty_id` FROM `Faculty` WHERE `Designation`='Librarian')");
+        $pass = mysqli_query($con, "SELECT * FROM `Library_card_index` WHERE `faculty_id`=$admin_id AND `faculty_id`=(SELECT `faculty_id` FROM `Faculty` WHERE `Designation`='Librarian')");
         $res = mysqli_num_rows($pass);
         if($res == 1) {
             // echo "Password verified";
+            $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `faculty_id`=$admin_id");
+            $row=mysqli_fetch_assoc($result);
+            $hash=$row['password'];
+            $verify=password_verify($password,$hash);
+            if($verify) {
             ?>
             <html>
                 <head>
@@ -110,8 +116,8 @@
                 </html>
                 <?php
         }
-
-        echo "Success login";
+    }
+        //echo "Success login";
     }
 
 

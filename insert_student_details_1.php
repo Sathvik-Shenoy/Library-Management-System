@@ -42,8 +42,8 @@
     $Type = $_POST['type'];
 
     $sql = ("INSERT INTO students VALUES ('$College_ID', '$Name', '$DOB','$Branch','$Semester','$Email','$PhoneNumber','$lib_id','$Type')");
-
-    $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$Password')");
+    $hash=password_hash($password,PASSWORD_DEFAULT);
+    $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$hash')");
     
     mysqli_query($con, $sql2);
 

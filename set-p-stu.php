@@ -44,8 +44,9 @@
         }
 
         if($rows == 1) {
+            $hash=password_hash($password,PASSWORD_DEFAULT);
             // Set password for a new faculty ID
-            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$password' WHERE college_id='$usn'");
+            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$hash' WHERE college_id='$usn'");
             //$sql2 = mysqli_query($con, "UPDATE `Students` SET lib_id='$lib_id' WHERE USN='$usn'");
             if(!$sql1) {
                 ?>
