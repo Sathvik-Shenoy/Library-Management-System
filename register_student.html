@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title> Student Registration </title>
     <link rel="stylesheet" href="register_style.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+      select{
+        height: 45px;
+            width: 300px;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+      }
+   </style>
    </head>
 <body>
   <div class="container">
@@ -27,7 +39,20 @@
           </div>
           <div class="input-box">
             <span class="details">Branch</span>
-            <input type="text" placeholder="Enter your branch" name="branch" required>
+            <select name="branch" required>
+              <option value="" disabled selected>Select your branch</option>
+              <option>Bio Technology</option>
+              <option>Civil Engineering</option>
+              <option>Computer Science & Business Systems</option>
+              <option>Computer Science & Engineering</option>
+              <option>Construction Technology & Management</option>
+              <option>Civil Engineering</option>
+              <option>Environmental Engineering</option>
+              <option>Industrial & Production Engineering</option>
+              <option>Information Science & Engineering</option>
+              <option>Mechanical Engineering</option>
+              <option>Polymer Science & Technology</option>
+            </select>
           </div>
           <div class="input-box">
             <span class="details">Semester</span>
@@ -43,7 +68,7 @@
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" required>
+            <input type="text" placeholder="Confirm your password" name="passwd" required>
           </div>
         </div>
         <div class="button">

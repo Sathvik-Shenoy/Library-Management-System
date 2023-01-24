@@ -42,7 +42,7 @@
         if($rows == 1) {
             $hash=password_hash($password,PASSWORD_DEFAULT);
             // Set password for a new faculty ID
-            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$hash' WHERE faculty_id=$employeeID");
+            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$password' WHERE faculty_id=$employeeID");
             //$sql2 = mysqli_query($con, "UPDATE `Faculty` SET lib_id=$lib_id WHERE faculty_id=$employeeID");
             if(!$sql1) {
                 // Invalid Credentials 

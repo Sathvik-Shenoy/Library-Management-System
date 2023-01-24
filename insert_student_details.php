@@ -41,7 +41,7 @@
 
     $sql = ("INSERT INTO Outsider_student (lib_id, name, phone, college, branch, semester, college_id) VALUES ('$lib_id', '$Name', '$PhoneNumber', '$College', '$Branch', $Semester, '$College_ID')");
     $hash=password_hash($Password,PASSWORD_DEFAULT);
-    $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$hash')");
+    $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$Password')");
     
     mysqli_query($con, $sql2);
 

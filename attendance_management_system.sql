@@ -25,7 +25,7 @@ CREATE TABLE `Library_card_index` (
 CREATE TABLE `Students` (
 	`USN` VARCHAR(20) NOT NULL UNIQUE,
     `name` CHAR(40) NOT NULL,
-    `Date_of_birth` DATE NOT NULL,
+    `Date_of_birth` DATE,
     `branch` VARCHAR(40) NOT NULL,
     `semester` INT NOT NULL,
     `email` VARCHAR(50) UNIQUE,
@@ -84,6 +84,7 @@ CREATE TABLE `Library_ledger` (
     `entry` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `exit` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `elapsed_time` TIME,
+    SUGGESTION VARCHAR(1000),
     PRIMARY KEY(`lib_id`, `entry`),
 	FOREIGN KEY(`lib_id`) REFERENCES Library_card_index(`lib_id`)
 );
@@ -95,6 +96,7 @@ CREATE TABLE `Reference_section` (
     `entry` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `exit` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `elapsed_time` TIME,
+    SUGGESTION VARCHAR(1000), 
     PRIMARY KEY(`lib_id`, `entry`),
 	FOREIGN KEY(`lib_id`) REFERENCES Library_card_index(`lib_id`)
 );
@@ -189,7 +191,8 @@ INSERT INTO `Library_card_index` VALUES
 */
 SELECT * FROM `Library_card_index`;
 SELECT * FROM LIBRARY_LEDGER;
-##SELECT * FROM `outsider_student`;
+SELECT * FROM STUDENTS; 
+
 #--- Adding the data to the Students table :  	
 /*INSERT INTO `Students` VALUES 
 	('01JST20IS011', 'Sathvik', '2002-09-29', 'IS', 5, 'sathvik@gmail.com', 7259499443, 194035, 'UG'),

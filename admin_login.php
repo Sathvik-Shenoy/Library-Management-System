@@ -53,11 +53,13 @@
         $res = mysqli_num_rows($pass);
         if($res == 1) {
             // echo "Password verified";
+            $pass_verify = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `faculty_id`=$admin_id AND `password`='$password'"); 
+            $pass_verify_rows = mysqli_num_rows($pass_verify);
             $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `faculty_id`=$admin_id");
             $row=mysqli_fetch_assoc($result);
-            $hash=$row['password'];
-            $verify=password_verify($password,$hash);
-            if($verify) {
+            //$hash=$row['password'];
+            //$verify=password_verify($password,$hash);
+            if($pass_verify_rows==1) {
             ?>
             <html>
                 <head>

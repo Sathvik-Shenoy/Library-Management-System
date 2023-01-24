@@ -23,12 +23,13 @@
         $rows = mysqli_num_rows($result);
         
         if($rows == 1) {
-
+            $pass_verify = mysqli_query($con,"SELECT * FROM `Reference_section` WHERE `lib_id`=$lib_id AND `password`='$password'"); 
+            $pass_verify_rows = mysqli_num_rows($pass_verify);
             $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id");
             $row=mysqli_fetch_assoc($result);
-            $hash=$row['password'];
-            $verify=password_verify($password,$hash);
-            if($verify) {
+            //$hash=$row['password'];
+            //$verify=password_verify($password,$hash);
+            if($pass_verify_rows==1) {
             $insert_entry = "INSERT INTO `Reference_section` (lib_id) VALUES ($lib_id)";
             mysqli_query($con, $insert_entry);
             ?>
@@ -127,6 +128,8 @@
     }
 
     $exit_id = $_POST['exit_id'];
+    $suggestion = $_POST['suggestion'];
+    mysqli_query($con,"UPDATE REFERENCE_SECTION SET SUGGESTION='$suggestion' WHERE LIB_ID=$exit_id");
     // echo $exit_id;
     if($exit_id != "") {
         $verify = mysqli_query($con,"SELECT lib_id, status FROM `Reference_section` WHERE `lib_id`=$exit_id AND `status` = 1;");

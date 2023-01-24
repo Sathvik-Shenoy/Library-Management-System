@@ -38,9 +38,42 @@
     $Designation = $_POST['designation'];
     $Employee_ID = $_POST['employee_id'];
     $password = $_POST['password'];
+    $passwd = $_POST['passwd'];
 
+    if($password!=$passwd) {
+        ?>
+            <html>
+                        <head>
+                            <link rel="stylesheet" type="text/css" href="style.css">
+                            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+                        </head>
+                        <body>
+                        <p style="text-align:center"> .. </p>
+                            <script>
+                            Swal.fire({
+                                title: 'Passwords do not match!',
+                                text: 'Enter same password',
+                                icon: 'error',
+                                confirmButtonText: 'Retry'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                        window.location.href = "register_faculty.html";
+                                    //   Swal.fire(
+                                    //     'Deleted!',
+                                    //     'Your file has been deleted.',
+                                    //     'success'
+                                    //   )
+                                    }
+                                })
+                        </script>
+                        </body>
+                    </html>
+        <?php } 
+
+    else {
     $hash=password_hash($password,PASSWORD_DEFAULT);
-    mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$Employee_ID', '$hash')");
+    mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$Employee_ID', '$password')");
 
     $sql = "INSERT INTO Outsider_faculty (lib_id, name, phone, college, department, designation, faculty_id) VALUES ('$lib_id', '$Name', '$PhoneNumber', '$College', '$Department','$Designation', '$Employee_ID')";
 
@@ -106,7 +139,7 @@
         </html>
 
         <?php
-    }
+    }}
     
     header("refresh:07; url=index.html");
 
