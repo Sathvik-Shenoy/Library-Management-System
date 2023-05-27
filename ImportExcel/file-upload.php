@@ -22,10 +22,14 @@ foreach($objExcel->getWorksheetIterator() as $worksheet)
 		$phone=$worksheet->getCellByColumnAndRow(6,$row)->getValue();
 		$lib_id=$worksheet->getCellByColumnAndRow(7,$row)->getValue();
 		$type=$worksheet->getCellByColumnAndRow(8,$row)->getValue();
+		$colid=$worksheet->getCellByColumnAndRow(9,$row)->getValue();
+		$pass=$worksheet->getCellByColumnAndRow(10,$row)->getValue();
 		if($usn!='')
 		{
-			$insertqry="INSERT INTO `students` VALUES ('$usn','$name',NULL,'$branch','$sem','$email','$phone','$lib_id','$type')";
-			$insertres=mysqli_query($con,$insertqry);
+			$insertqry1="INSERT INTO `library_card_index` VALUES ('$lib_id','$colid',NULL,'$pass')";
+			$insertres=mysqli_query($con,$insertqry1);
+			$insertqry2="INSERT INTO `students` VALUES ('$usn','$name',NULL,'$branch','$sem','$email','$phone','$lib_id','$type')";
+			$insertres=mysqli_query($con,$insertqry2);
 		}
 	}
 }

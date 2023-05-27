@@ -1,7 +1,7 @@
 <?php
 
-    $con = mysqli_connect('127.0.0.1','root','mysql123');
-
+    //$con = mysqli_connect('127.0.0.1','root','mysql123');
+    $con = mysqli_connect("library-management.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     if(!$con)
     {
         echo 'Not connected to the server';
@@ -14,8 +14,8 @@
 
     function gen_random_key() {
 
-        $conn = mysqli_connect("localhost", "root", "mysql123", "attendance_management_system");
-
+        //$conn = mysqli_connect("localhost", "root", "mysql123", "attendance_management_system");
+        $conn = mysqli_connect("library-management.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
         $key = rand(100000, 999999);
         $result = mysqli_query($conn,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$key");
         if(mysqli_num_rows($result) > 0){
@@ -76,7 +76,7 @@
     $hash=password_hash($password,PASSWORD_DEFAULT);
     mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$Employee_ID', '$password')");
 
-    $sql = "INSERT INTO FACULTY VALUES ('$Employee_ID','$Name','$Date_of_join','$Department','$Email','$PhoneNumber','$lib_id','$Type','$Designation')";
+    $sql = "INSERT INTO Faculty VALUES ('$Employee_ID','$Name','$Date_of_join','$Department','$Email','$PhoneNumber','$lib_id','$Type','$Designation')";
 
     
 
