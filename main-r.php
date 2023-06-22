@@ -1,8 +1,9 @@
 <?php 
 
     // Establish connection with the database
-    //$con = mysqli_connect('127.0.0.1','root','mysql123');
-    $con = mysqli_connect("library-management.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+    //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+
+    $con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     // If connection failed - give error
     if(!$con) {
         die ("Could not connect to database" . mysqli_connect_error());
@@ -23,7 +24,7 @@
         $rows = mysqli_num_rows($result);
         
         if($rows == 1) {
-            $pass_verify = mysqli_query($con,"SELECT * FROM `Reference_section` WHERE `lib_id`=$lib_id AND `password`='$password'"); 
+            $pass_verify = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id AND `password`='$password'"); 
             $pass_verify_rows = mysqli_num_rows($pass_verify);
             $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id");
             $row=mysqli_fetch_assoc($result);
@@ -129,7 +130,7 @@
 
     $exit_id = $_POST['exit_id'];
     $suggestion = $_POST['suggestion'];
-    mysqli_query($con,"UPDATE REFERENCE_SECTION SET SUGGESTION='$suggestion' WHERE LIB_ID=$exit_id");
+    mysqli_query($con,"UPDATE Reference_section SET SUGGESTION='$suggestion' WHERE lib_id=$exit_id");
     // echo $exit_id;
     if($exit_id != "") {
         $verify = mysqli_query($con,"SELECT lib_id, status FROM `Reference_section` WHERE `lib_id`=$exit_id AND `status` = 1;");

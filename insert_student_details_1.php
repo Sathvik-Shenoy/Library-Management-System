@@ -1,8 +1,9 @@
 <?php
     error_reporting(E_ERROR | E_PARSE);
     
-    //$con = mysqli_connect('127.0.0.1','root','mysql123');
-    $con = mysqli_connect("library-management.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+    //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+
+    $con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     if(!$con)
     {
         echo 'Not connected to the server';
@@ -16,10 +17,10 @@
     function gen_random_key() {
 
         //$conn = mysqli_connect("localhost", "root", "mysql123", "attendance_management_system");
-        $conn = mysqli_connect("library-management.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+        $conn = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     if(!$con)
         $key = rand(100000, 999999);
-        $result = mysqli_query($conn,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$key");
+        $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$key");
         if(mysqli_num_rows($result) > 0){
             while($data = mysqli_fetch_assoc($result)){
                 gen_random_key();

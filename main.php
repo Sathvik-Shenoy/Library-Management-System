@@ -1,8 +1,9 @@
 <?php 
     
     // Establish connection with the database
-    //$con = mysqli_connect('127.0.0.1','root','mysql123');
-    $con = mysqli_connect("library-management.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+    //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+
+    $con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     // If connection failed - give error
     if(!$con) {
         die ("Could not connect to database" . mysqli_connect_error());
@@ -130,7 +131,7 @@
     
     $exit_id = $_POST['exit_id'];
     $suggestion = $_POST['suggestion'];
-    mysqli_query($con,"UPDATE LIBRARY_LEDGER SET SUGGESTION='$suggestion' WHERE LIB_ID=$exit_id");
+    mysqli_query($con,"UPDATE Library_ledger SET SUGGESTION='$suggestion' WHERE lib_id=$exit_id");
     // echo $exit_id;
     if($exit_id != "") {
         $verify = mysqli_query($con,"SELECT lib_id, status FROM `Library_ledger` WHERE `lib_id`=$exit_id AND `status` = 1;

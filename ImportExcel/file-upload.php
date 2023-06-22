@@ -26,9 +26,9 @@ foreach($objExcel->getWorksheetIterator() as $worksheet)
 		$pass=$worksheet->getCellByColumnAndRow(10,$row)->getValue();
 		if($usn!='')
 		{
-			$insertqry1="INSERT INTO `library_card_index` VALUES ('$lib_id','$colid',NULL,'$pass')";
+			$insertqry1="INSERT INTO `Library_card_index` VALUES ('$lib_id','$usn',NULL,'$pass')";
 			$insertres=mysqli_query($con,$insertqry1);
-			$insertqry2="INSERT INTO `students` VALUES ('$usn','$name',NULL,'$branch','$sem','$email','$phone','$lib_id','$type')";
+			$insertqry2="INSERT INTO `Students` VALUES ('$usn','$name',NULL,'$branch','$sem','$email','$phone','$lib_id','$type')";
 			$insertres=mysqli_query($con,$insertqry2);
 		}
 	}
