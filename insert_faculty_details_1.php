@@ -1,8 +1,8 @@
 <?php
 
     //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
-
-    $con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+    $con = mysqli_connect('127.0.0.1','root','mysql123','attendance_management_system');
+    //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     if(!$con)
     {
         echo 'Not connected to the server';
@@ -30,8 +30,7 @@
 
     }
 
-    $lib_id = gen_random_key();
-    
+    //$lib_id = gen_random_key();
     $Name = $_POST['name'];
     $PhoneNumber = $_POST['phone'];
     $Email = $_POST['email'];
@@ -75,9 +74,9 @@
     <?php } 
     else {
     $hash=password_hash($password,PASSWORD_DEFAULT);
-    mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$lib_id', '$Employee_ID', '$password')");
+    mysqli_query($con, "INSERT INTO Library_card_index (lib_id, faculty_id, `password`) VALUES ('$Employee_ID', '$Employee_ID', '$password')");
 
-    $sql = "INSERT INTO Faculty VALUES ('$Employee_ID','$Name','$Date_of_join','$Department','$Email','$PhoneNumber','$lib_id','$Type','$Designation')";
+    $sql = "INSERT INTO Faculty VALUES ('$Employee_ID','$Name','$Date_of_join','$Department','$Email','$PhoneNumber','$Employee_ID','$Type','$Designation')";
 
     
 
@@ -135,7 +134,7 @@
                 <br>
                 <center><img src="images/tick.png"></center>
                 <br>
-                <h3 style="text-align:center"> Your library ID is  <?php echo $lib_id ?> </h3>
+                <h3 style="text-align:center"> Your library ID is  <?php echo $Employee_ID ?> </h3>
             </div>
             </body>
         </html>

@@ -2,8 +2,8 @@
     error_reporting(E_ERROR | E_PARSE);
     
     //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
-
-    $con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+    $con = mysqli_connect('127.0.0.1','root','mysql123','attendance_management_system');
+    //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     if(!$con)
     {
         echo 'Not connected to the server';
@@ -32,19 +32,24 @@
 
     }
 
-    $lib_id = gen_random_key();
-
+    //$lib_id = gen_random_key();
+    $lib_id=$_POST['SR'];
     $Name = $_POST['name'];
     $PhoneNumber = $_POST['phone'];
-    $Email = $_POST['email'];
+    $Em_Phone = $_POST['em_phone'];
+    //$Email = $_POST['email'];
     $Branch = $_POST['branch'];
-    $Semester = $_POST['semester'];
+    //$Semester = $_POST['semester'];
+    $Blood = $_POST['blood'];
+    $Address = $_POST['address'];
     $College_ID = $_POST['college_id'];
     $Password = $_POST['password'];
     $DOB = $_POST['dob'];
     $Type = $_POST['type'];
+    $Photo = $_POST['photo'];
 
-    $sql = ("INSERT INTO Students VALUES ('$College_ID', '$Name', '$DOB','$Branch','$Semester','$Email','$PhoneNumber','$lib_id','$Type')");
+    //$sql = ("INSERT INTO Students VALUES ('$College_ID', '$Name', '$DOB','$Branch','$Semester','$Email','$PhoneNumber','$lib_id','$Type')");
+    $sql = ("INSERT INTO Students VALUES ('$lib_id', '$Name', '$PhoneNumber', '$Em_Phone', '$Blood', '$Address', '$College_ID', '$DOB','$Branch','$Type','$Photo')");
     $hash=password_hash($Password,PASSWORD_DEFAULT);
     $sql2 = ("INSERT INTO Library_card_index (lib_id, college_id, `password`) VALUES ('$lib_id', '$College_ID', '$Password')");
     
