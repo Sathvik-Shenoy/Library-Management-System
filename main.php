@@ -1,9 +1,9 @@
 <?php 
-    
+    error_reporting(E_ERROR | E_PARSE);
     // Establish connection with the database
     //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
-
-    $con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
+    $con = mysqli_connect('127.0.0.1','root','mysql123','attendance_management_system');
+    //$con = mysqli_connect("lib-jss.ct4teqpkgci2.us-east-1.rds.amazonaws.com","admin","mysql123","attendance_management_system");
     // If connection failed - give error
     if(!$con) {
         die ("Could not connect to database" . mysqli_connect_error());
@@ -29,10 +29,12 @@
             $pass_verify_rows = mysqli_num_rows($pass_verify);
             $result = mysqli_query($con,"SELECT * FROM `Library_card_index` WHERE `lib_id`=$lib_id");
             $row=mysqli_fetch_assoc($result);
+            $result2 = mysqli_query($con,"SELECT * FROM `Students` WHERE `lib_id`=$lib_id");
+            $row2 = mysqli_fetch_assoc($result2);
             //$hash=$row['password'];
             //$verify=password_verify($password,$hash);
             if($pass_verify_rows==1) {
-            $insert_entry = "INSERT INTO `Library_ledger` (lib_id) VALUES ($lib_id)";
+            $insert_entry = "INSERT INTO `Library_ledger` (lib_id,name,branch) VALUES ($lib_id,'{$row2['name']}','{$row2['branch']}')";
             mysqli_query($con, $insert_entry);
             ?>
             <!-- SUCCESS ON ENTRY  -->

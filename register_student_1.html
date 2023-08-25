@@ -17,6 +17,11 @@
               border-bottom-width: 2px;
               transition: all 0.3s ease;
         }
+        .container{
+          height:100%;
+          overflow: auto;
+        }
+
      </style>
    </head>
 <body>
@@ -24,8 +29,12 @@
     <br><br>
     <div class="title">Student Registration Form</div>
     <div class="content">
-      <form action="insert_student_details_1.php" method="POST">
+      <form action="insert_student_details_1.php" method="POST" autocomplete="off">
         <div class="user-details">
+          <div class="input-box">
+            <span class="details">SR Number</span>
+            <input type="text" placeholder="Enter your SR Number" name="SR" required>
+          </div>
           <div class="input-box">
             <span class="details">Full Name</span>
             <input type="text" placeholder="Enter your name" name="name" required>
@@ -35,9 +44,13 @@
             <input type="text" placeholder="Enter your phone number" name="phone" required>
           </div>
           <div class="input-box">
+            <span class="details">Emergency Phone Number</span>
+            <input type="text" placeholder="Enter emergency phone number" name="em_phone" required>
+          </div>
+          <!--<div class="input-box">
             <span class="details">E-Mail ID</span>
             <input type="email" placeholder="Enter your email ID" name="email" required>
-          </div>
+          </div>-->
           <div class="input-box">
             <span class="details">Branch</span>
             <select name="branch" required>
@@ -55,21 +68,33 @@
               <option>Polymer Science & Technology</option>
             </select>
           </div>
-          <div class="input-box">
+          <!--<div class="input-box">
             <span class="details">Semester</span>
             <input type="number" placeholder="Enter your semester" name="semester" required>
-          </div>
+          </div>-->
           <div class="input-box">
-            <span class="details">Type</span>
-            <input type="text" placeholder="Enter your type" name="type" required>
+            <span class="details">Programme</span>
+            <input type="text" placeholder="Enter your programme" name="type" required>
           </div>
           <div class="input-box">
             <span class="details">USN</span>
-            <input type="text" placeholder="Enter your USN" name="college_id" required>
+            <input type="text" placeholder="Enter your USN" name="college_id">
+          </div>
+          <div class="input-box">
+            <span class="details">Blood Group</span>
+            <input type="text" placeholder="Enter your blood group" name="blood" required>
           </div>
           <div class="input-box">
             <span class="details">Date of Birth</span>
             <input type="date" placeholder="Enter your date of birth" name="dob" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" placeholder="Enter your address" name="address" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Photo URL</span>
+            <input type="url" placeholder="Enter your photo URL" name="photo" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
