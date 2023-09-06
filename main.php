@@ -31,10 +31,13 @@
             $row=mysqli_fetch_assoc($result);
             $result2 = mysqli_query($con,"SELECT * FROM `Students` WHERE `lib_id`=$lib_id");
             $row2 = mysqli_fetch_assoc($result2);
+            $currentTimestamp = time();
+            $newTimestamp = $currentTimestamp + (5 * 60 * 60) + (30 * 60);
+            $formattedMySQLTimestamp = date("Y-m-d H:i:s", $newTimestamp);
             //$hash=$row['password'];
             //$verify=password_verify($password,$hash);
             if($pass_verify_rows==1) {
-            $insert_entry = "INSERT INTO `Library_ledger` (lib_id,name,branch) VALUES ($lib_id,'{$row2['name']}','{$row2['branch']}')";
+            $insert_entry = "INSERT INTO `Library_ledger` (lib_id,name,branch,entry) VALUES ($lib_id,'{$row2['name']}','{$row2['branch']}','$formattedMySQLTimestamp')";
             mysqli_query($con, $insert_entry);
             ?>
             <!-- SUCCESS ON ENTRY  -->
@@ -133,7 +136,10 @@
     
     $exit_id = $_POST['exit_id'];
     $suggestion = $_POST['suggestion'];
-    mysqli_query($con,"UPDATE Library_ledger SET SUGGESTION='$suggestion' WHERE lib_id=$exit_id");
+    $currentTimestamp = time();
+    $newTimestamp = $currentTimestamp + (5 * 60 * 60) + (30 * 60);
+    $formattedMySQLTimestamp = date("Y-m-d H:i:s", $newTimestamp);
+    mysqli_query($con,"UPDATE Library_ledger SET SUGGESTION='$suggestion', `exit`='$formattedMySQLTimestamp' WHERE lib_id=$exit_id");
     // echo $exit_id;
     if($exit_id != "") {
         $verify = mysqli_query($con,"SELECT lib_id, status FROM `Library_ledger` WHERE `lib_id`=$exit_id AND `status` = 1;
