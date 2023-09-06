@@ -37,7 +37,7 @@
     $c_password = $_POST['confirm_password'];
 
     if($password == $c_password){    
-        $res = mysqli_query($con, "SELECT * FROM `Students` WHERE `USN`='$usn'");
+        $res = mysqli_query($con, "SELECT * FROM `Students` WHERE `lib_id`='$usn'");
         if($res == false) {
             $rows = 0;
         } else {
@@ -47,7 +47,7 @@
         if($rows == 1) {
             $hash=password_hash($password,PASSWORD_DEFAULT);
             // Set password for a new faculty ID
-            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$password' WHERE college_id='$usn'");
+            $sql1 = mysqli_query($con, "UPDATE `Library_card_index` SET password='$password' WHERE lib_id='$usn'");
             //$sql2 = mysqli_query($con, "UPDATE `Students` SET lib_id='$lib_id' WHERE USN='$usn'");
             if(!$sql1) {
                 ?>
@@ -99,7 +99,7 @@
                 <center><img src="images/tick.png"></center>
                 <br>
                 <!--<h2 style=text-align:center> Please remember your Library ID for login </h2>
-                <h3 style="text-align:center"> Your library ID is  <?php echo $lib_id ?> </h3>-->
+                <h3 style="text-align:center"> Your library ID is  <?php //echo $lib_id ?> </h3>-->
             </div>
             </body>
         </html>
